@@ -6,11 +6,40 @@
 //
 
 #include <iostream>
+#include <string>
+
+#include <cstdlib>  // For getenv
+#include <unistd.h> // For getcwd on Mac/Linux
+#include <limits.h>
+
+using namespace std;
+
+void input(int f)
+{
+    char cwd[PATH_MAX];  // Buffer to store the path
+
+        if (getcwd(cwd, sizeof(cwd)) != nullptr) {
+            std::cout << "Current working directory: " << cwd << std::endl;
+        } else {
+            std::cerr << "Error getting current directory!" << std::endl;
+        }
+    
+    string path;
+    path = "../input_data/training_test_";
+    path.append(to_string(f));
+    path.append(".msrcp");
+    
+    std::FILE* file = std::fopen(path.c_str(), "r");
+    if(file == NULL){printf("No file found\n");}
+    
+    fclose(file);
+}
 
 int main(int argc, const char * argv[])
 {
-    int repo_test = 0;
+    int file = 1;
+    input(file);
+    
     // insert code here...
-    std::cout << "This is a test, HELLO WORLD!\n";
     return 0;
 }
