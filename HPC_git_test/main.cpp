@@ -19,7 +19,7 @@ void input(int f)
     char cwd[PATH_MAX];  // Buffer to store the path
 
         if (getcwd(cwd, sizeof(cwd)) != nullptr) {
-            std::cout << "Current working directory: " << cwd << std::endl;
+            std::cout << "Current working directory (Guillaume > Sam): " << cwd << std::endl;
         } else {
             std::cerr << "Error getting current directory!" << std::endl;
         }
